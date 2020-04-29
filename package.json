@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./src/master/startMaster.js",
   "scripts": {
+    "start": "node ./dist/index.js",
     "start-master": "node ./dist/master/startMaster.js",
     "start-worker": "node ./dist/worker/startWorker.js",
     "compile": " rm -f -r ./dist && tsc -p ./tsconfig.json",
@@ -23,7 +24,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@types/redis": "^2.8.18",
     "amqplib": "^0.5.5",
+    "redis": "^3.0.2",
     "uuid": "^7.0.3"
   },
   "bugs": {
