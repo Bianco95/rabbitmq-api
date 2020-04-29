@@ -57,5 +57,4 @@ export class Worker extends RabbitManager {
 }
 
 const redis = new RedisManager();
-
 const worker = new Worker();
