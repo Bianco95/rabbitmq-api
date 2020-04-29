@@ -1,10 +1,12 @@
 {
   "name": "rabbitmq-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/master/startMaster.js",
   "scripts": {
-    "start": "node ./dist/index.js",
-    "compile": " rm -f -r ./dist && tsc -p ./tsconfig.json"
+    "start-master": "node ./dist/master/startMaster.js",
+    "start-worker": "node ./dist/worker/startWorker.js",
+    "compile": " rm -f -r ./dist && tsc -p ./tsconfig.json",
+    "docker": "npm run compile && docker-compose up --build -d"
   },
   "repository": {
     "type": "git",
