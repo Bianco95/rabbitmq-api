@@ -51,7 +51,7 @@ export class Worker extends RabbitManager {
             }, 2000);
             }, {
                 noAck: false
-            });
+        });
     }
 
 }
