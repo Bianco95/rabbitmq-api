@@ -34,15 +34,16 @@ export class Worker extends RabbitManager {
 
         console.log("the worker "+this.id+" is waiting for messages in %s. To exit press CTRL+C", this.queue);
 
-        this.channel.consume(this.queue, (msg) => {  
+        this.channel.consume(this.queue, async (msg) => {  
             let result:Message = (JSON.parse(msg.content.toString()));
-            console.log(result);
 
             if(result.type === "set"){
-                RedisManager.getInstance().storeKey(result.key.toString(), result.body);
+                await RedisManager.getInstance().storeKey(result.key.toString(), result.body);
+               
             }
             if(result.type === "get"){
-                RedisManager.getInstance().getKey(result.key.toString());
+                const response = await RedisManager.getInstance().getValue(result.key.toString());
+                console.log(response);
             }
         
             setTimeout(() => {

@@ -10,6 +10,7 @@ export class RedisManager {
             host: "localhost",
             port: 6379
         });
+        this.createAndConnectRedis();
     }
 
     public static getInstance(): RedisManager {
@@ -29,18 +30,24 @@ export class RedisManager {
         });
     }
 
-    public storeKey(key: string, value:string): void {
+    public storeKey(key: string, value:string): Promise<void> {
       
-        this.redisClient.connected ? console.log("sono connesso"): console.log("non connesso");
+        this.redisClient.connected ? console.log("connected"): console.log("not connected");
 
-        this.redisClient.set(key, value, (err) => {
-            console.log("chiave inserita "+key)
-          });
+        return new Promise((resolve, reject)=>{
+
+            this.redisClient.set(key, value, (err) => {
+                err !== undefined ? resolve() : reject();
+              });
+        })
+        
     }
 
-    public getKey(key: string): void {
-        this.redisClient.get(key, (err, reply) => {
-            console.log(reply);
-          });
+    public getValue(key: string): Promise<string> {
+        return new Promise((resolve, reject)=>{
+            this.redisClient.get(key, (err, reply) => {
+                err !== undefined ? resolve(reply) : reject();
+              });
+        })
     }
 }

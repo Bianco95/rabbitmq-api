@@ -5,7 +5,7 @@ import * as AMQP from "amqplib/callback_api";
 import { RabbitManager } from '../manager/rabbitManager';
 
 export interface Message{
-    type: "get" | "set";
+    type: string;
     key: number
     body: string;
 }
@@ -35,7 +35,7 @@ export class Master extends RabbitManager{
         let message:Message = {
             key: this.messageCounter,
             body: "body of the message"+this.messageCounter.toString(),
-            type: "get"
+            type: process.argv[2]
         }
 
         this.channel.assertQueue(this.queue, {

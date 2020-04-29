@@ -17,11 +17,11 @@ Packages used in this simple project:
     2 - run a docker container with rabbitmq service (port 5672)
     3 - you can do the first two steps using docker compose (whose file is provided in this repo)
         docker-compose up --build -d
-    4 - open a terminal, go to the project folder and type "npm run start-master": 
-        every second a message of type "get" will be inserted into a rabbitmq queue; 
+    4 - open a terminal, go to the project folder and type "npm run start-master -- set": 
+        every second a message of type "set" will be inserted into a rabbitmq queue; 
         stop when you want by pressing ctrl-c
     5 - open another terminal, go to the project folder and type "npm run start-worker":
-        every two seconds, the worker will take the message from the rabbitmq queue and will push the key and the value of the
-        message to the redis.
+        every two seconds, the worker will take the message from the rabbitmq queue and will push key and the value of the
+        message to redis.
   
   
