@@ -12,6 +12,9 @@ Packages used in this simple project:
     - npm install uuid
     - https://www.npmjs.com/package/uuid
   
+  - use the following command specified in package.json 
+  npm i
+  
   How to use:
     1 - run a docker container with redis service(port 6379)
     2 - run a docker container with rabbitmq service (port 5672)
