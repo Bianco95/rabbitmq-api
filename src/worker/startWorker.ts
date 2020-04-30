@@ -24,6 +24,12 @@ export class Worker extends RabbitManager {
                 this.assertQueueAndConsume();
             })
         });
+        
+    }
+
+    
+
+    public getRabbitConsumer():void{
     }
 
     public assertQueueAndConsume():void{
